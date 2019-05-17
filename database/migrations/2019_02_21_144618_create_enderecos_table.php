@@ -14,9 +14,9 @@ class CreateEnderecosTable extends Migration
     public function up()
     {
         Schema::create('enderecos', function (Blueprint $table) {
-            $table->integer('cliente_id')->unsigned();
-            $table->foreign('cliente_id')->references('id')->on('clients');
-            $table->primary('cliente_id');
+            $table->integer('client_id')->unsigned();
+            $table->foreign('client_id')->references('id')->on('clients');
+            $table->primary('client_id');
             $table->string('rua');
             $table->integer('numero');
             $table->string('bairro');

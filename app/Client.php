@@ -8,5 +8,6 @@ class Client extends Model
 {
     public function endereco(){
         return $this->hasOne('App\Endereco');
+        // return $this->hasOne(Endereco::class);
     }
 }
