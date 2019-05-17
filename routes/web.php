@@ -22,9 +22,9 @@ Route::get('/clientes', function () {
         
         // $e = Endereco::where('cliente_id', $c->id)->first();
         
-        echo "<p> rua : " . $c->endereco->rua . "</p>";
-        echo "<p> numero : " .  $c->endereco->numero . "</p>";
-        echo "<p> bairro : " . $c->endereco->bairro . "</p>";
+        echo "<p> Rua : " . $c->endereco->rua . "</p>";
+        echo "<p> Número : " .  $c->endereco->numero . "</p>";
+        echo "<p> Bairro : " . $c->endereco->bairro . "</p>";
         echo "<p> Cidade : " . $c->endereco->cidade . "</p>";
         echo "<p> UF : " . $c->endereco->uf . "</p>";
         echo "<p> CEP : " . $c->endereco->cep . "</p>";
@@ -37,7 +37,11 @@ Route::get('/clientes', function () {
 Route::get('/enderecos', function () {
     $enderecos = Endereco::all();
     foreach($enderecos as $end){
-        echo "<p> ID cliente : " . $end->cliente_id . "</p>";
+        echo "<p> ID cliente : " . $end->client_id . "</p>";
+
+        echo "<p> Nome: " . $end->client->nome . "</p>";
+        echo "<p> Telefone: " . $end->client->telefone . "</p>";
+        
         echo "<p> Rua : " . $end->rua . "</p>";
         echo "<p> Numero : " . $end->numero . "</p>";
         echo "<p> Bairro : " . $end->bairro . "</p>";
