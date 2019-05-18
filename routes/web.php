@@ -21,14 +21,14 @@ Route::get('/clientes', function () {
         echo "<p> Telefone: " . $c->telefone . "</p>";
         
         // $e = Endereco::where('cliente_id', $c->id)->first();
-        
-        echo "<p> Rua : " . $c->endereco->rua . "</p>";
-        echo "<p> Número : " .  $c->endereco->numero . "</p>";
-        echo "<p> Bairro : " . $c->endereco->bairro . "</p>";
-        echo "<p> Cidade : " . $c->endereco->cidade . "</p>";
-        echo "<p> UF : " . $c->endereco->uf . "</p>";
-        echo "<p> CEP : " . $c->endereco->cep . "</p>";
-
+        if ($c->endereco){
+            echo "<p> Rua : " . $c->endereco->rua . "</p>";
+            echo "<p> Número : " .  $c->endereco->numero . "</p>";
+            echo "<p> Bairro : " . $c->endereco->bairro . "</p>";
+            echo "<p> Cidade : " . $c->endereco->cidade . "</p>";
+            echo "<p> UF : " . $c->endereco->uf . "</p>";
+            echo "<p> CEP : " . $c->endereco->cep . "</p>";
+        }
         echo "<hr>";
     }
 });
@@ -50,4 +50,16 @@ Route::get('/enderecos', function () {
         echo "<p> CEP : " . $end->cep . "</p>";
         echo "<hr>";
     }
+});
+
+
+Route::get('/clientes/json', function(){
+    //lazy loading - Não carrega os relacionamentos
+    //$clientes = Client::all();
+    
+    //eager loading - Carrega os relacionamentos
+    $clientes = Client::with(['endereco'])->get();
+    
+    
+    return $clientes->toJson();
 });
